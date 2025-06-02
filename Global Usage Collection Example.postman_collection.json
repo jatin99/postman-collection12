@@ -1,0 +1,53 @@
+{
+	"info": {
+		"_postman_id": "0ea23e18-1d50-4fb6-80de-a3ab416deaa3",
+		"name": "Global Usage Collection Example",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "648497",
+		"_collection_link": "https://orange-eclipse-8814.postman.co/workspace/SDET-with-Jatin~a9866509-1e25-4c3f-9de4-535356c57c94/collection/648497-0ea23e18-1d50-4fb6-80de-a3ab416deaa3?action=share&source=collection_link&creator=648497"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.log(pm.globals.get(\"DEMO-KEY\"))"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "DEMO_KEY",
+						"value": "{{DEMO-KEY}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://www.google.com",
+					"protocol": "https",
+					"host": [
+						"www",
+						"google",
+						"com"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

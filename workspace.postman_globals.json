@@ -1,0 +1,15 @@
+{
+	"id": "0b25b0af-8335-4f3d-8794-114263d9dc45",
+	"values": [
+		{
+			"key": "DEMO-KEY",
+			"value": "12345",
+			"type": "any",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2025-05-29T10:44:10.969Z",
+	"_postman_exported_using": "Postman/11.47.1"
+}
