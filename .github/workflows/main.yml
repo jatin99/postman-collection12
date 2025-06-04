@@ -1,6 +1,6 @@
 name: GitHub Actions Demo
 on: 
-    workflow_dispatch: # Allows manual run from GitHub UI
+  workflow_dispatch: # Allows manual run from GitHub UI
 jobs:
   run-postman-tests:
     runs-on: ubuntu-latest
@@ -17,4 +17,4 @@ jobs:
         run: |
           newman run "Inwarranty-flow Collection.postman_collection.json" \
             -e "QA.postman_environment.json" \
-            --reporters cli,htmlextra \
+            -r cli,htmlextra \
