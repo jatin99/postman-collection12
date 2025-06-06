@@ -9,5 +9,12 @@ on:
         description: 'Choose Env'
         required: true
         default: staging
+
+jobs:
+    test:
+      runs-on: ubuntu-latest
+      steps:
+       - name: Use input
+         run: echo Running ${{github.event.input.environment}}
   
   
