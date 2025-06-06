@@ -34,6 +34,7 @@ jobs:
             -d testdata.csv 
             
       - name: Upload Report
+        if: always()
         uses: actions/download-artifact@v4.3.0
         with:
           name: newman-html-report
