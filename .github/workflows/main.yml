@@ -38,4 +38,4 @@ jobs:
         uses: actions/upload-artifact@v4.6.2
         with:
           name: newman-html-report
-          path: newman/
+          path: newman/*.html
