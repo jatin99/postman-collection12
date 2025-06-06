@@ -34,7 +34,7 @@ jobs:
             -d testdata.csv
             
       - name: Upload Report
-        uses: actions/upload-artifact@v3
+        uses: actions/download-artifact@v4.3.0
         with:
           name: newman-html-report
           path: newman/
