@@ -33,6 +33,12 @@ jobs:
               -r cli,htmlextra \
               -d testdata.csv
 
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v4.3.0
+        with:
+          name: Download Report
+          path: newman/*.html
+
 
 
 
