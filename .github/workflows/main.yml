@@ -1,48 +1,38 @@
-name : Postman Tests
+name: Postman Tests
 
 on:
-  push: #Event driven!!! Push something into main branch
+  push:
     branches: [main]
-  workflow_dispatch: #Manual Play Button
-
+  workflow_dispatch:
 
 jobs:
   run-tests:
-    runs-on : ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
-    
-      - name : Checkout the code #Bring our Postman Collection on the newly create VM
+      - name: Checkout the code
         uses: actions/checkout@v4.2.2
 
-      - name : Install Node js
+      - name: Install Node.js
         uses: actions/setup-node@v3.9.1
-        with: 
+        with:
           node-version: '22'
 
       - name: Install newman and html extra
-        run: | 
-              npm install -g newman
-              npm install -g newman-reporter-htmlextra
-      
+        run: |
+          npm install -g newman
+          npm install -g newman-reporter-htmlextra
 
       - name: Run the Postman Collection
-        run: | 
-              newman run 'Inwarranty-flow Collection.postman_collection.json' \ 
-              -e 'QA.postman_environment.json' \
-              -r cli,htmlextra \
-              -d testdata.csv
+        run: |
+          newman run 'Inwarranty-flow Collection.postman_collection.json' \
+            -e 'QA.postman_environment.json' \
+            -r cli,htmlextra \
+            -d testdata.csv
 
-      - name: Download a Build Artifact
+      - name: Upload Newman HTML Report
         if: always()
-        uses: actions/download-artifact@v4.3.0
+        uses: actions/upload-artifact@v4.3.0
         with:
-          name: Download Report
+          name: newman-report
           path: newman/*.html
-
-
-
-
-        
-    
-  
