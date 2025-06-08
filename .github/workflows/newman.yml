@@ -55,7 +55,7 @@ jobs:
         username: ${{ secrets.EMAIL_USERNAME }}
         password: ${{ secrets.EMAIL_PASSWORD }}
         subject: 🧪 API Test Report - GitHub Actions
-        to: yourrecipient@example.com
+        to: jatinvsharma@gmail.com
         from: Jatin from GitHub Actions <${{ secrets.EMAIL_USERNAME }}>
         body: |
           Hello,
@@ -66,4 +66,4 @@ jobs:
     
           Regards,  
           GitHub Actions 🤖
-        attachments: newman/html-report/index.html
+        attachments: newman/index.html
