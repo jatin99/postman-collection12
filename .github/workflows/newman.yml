@@ -46,3 +46,24 @@ jobs:
        with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: newman
+          
+     - name: Send report via Email
+       uses: dawidd6/action-send-mail@v3
+       with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        username: ${{ secrets.EMAIL_USERNAME }}
+        password: ${{ secrets.EMAIL_PASSWORD }}
+        subject: 🧪 API Test Report - GitHub Actions
+        to: yourrecipient@example.com
+        from: Jatin from GitHub Actions <${{ secrets.EMAIL_USERNAME }}>
+        body: |
+          Hello,
+    
+          Please find the attached HTML report generated after running the Postman tests via GitHub Actions.
+    
+          Link to live report (GitHub Pages): https://<your-username>.github.io/<your-repo>/
+    
+          Regards,  
+          GitHub Actions 🤖
+        attachments: newman/html-report/index.html
