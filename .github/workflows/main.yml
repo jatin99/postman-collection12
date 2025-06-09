@@ -1,0 +1,43 @@
+name: Postman Workflow
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron : 30 07 * * *
+    - cron : 30 4 * * *
+
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v4.2.2
+
+    - name: Install nodejs
+      uses: actions/setup-node@v3.9.1
+
+    - name: Install newman
+      run: |
+           npm install -g newman newman-reporter-htmlextra
+
+    - name: Run Postman Collection
+      run: |
+         newman run Inwarranty-flow Collection.postman_collection.json \
+         -e QA.postman_environment.json \
+         -r cli,htmlextra \
+         --reporter-htmlextra-export ./newman/index.html
+
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v4.6.2
+      with: 
+        name: Newman report
+        path: newman/*.html
+
+    - name: GitHub Pages v3
+      uses: peaceiris/actions-gh-pages@v4.0.0
+      with:
+       publish_dir: newman/
