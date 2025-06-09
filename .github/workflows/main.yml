@@ -32,12 +32,14 @@ jobs:
          --reporter-htmlextra-export ./newman/index.html
 
     - name: Upload a Build Artifact
+      if: always()
       uses: actions/upload-artifact@v4.6.2
       with: 
         name: Newman report
         path: newman/*.html
 
     - name: GitHub Pages v3
+      if: always()
       uses: peaceiris/actions-gh-pages@v4.0.0
       with:
        publish_dir: newman/
