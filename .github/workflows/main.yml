@@ -67,5 +67,5 @@ jobs:
 
              Regards,  
              GitHub Actions 🤖
-        attachments: newman/html-report/index.html
+        attachments: newman/index.html
       
